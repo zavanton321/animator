@@ -1,8 +1,11 @@
 package com.example.animator
 
+import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.os.Bundle
+import android.util.Log
+import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -16,7 +19,9 @@ class MainActivity : AppCompatActivity() {
 
             // animateWithValueAnimator()
             // animateWithObjectAnimator()
-            animateWithViewPropertyAnimator()
+            // animateWithViewPropertyAnimator()
+            // complexAnimationWithAnimatorSet()
+            animateWithInterpolatorAndListener()
         }
     }
 
@@ -40,5 +45,29 @@ class MainActivity : AppCompatActivity() {
             .alpha(0F)
             .setDuration(500)
             .start()
+    }
+
+    private fun complexAnimationWithAnimatorSet() {
+        val rightAnimator = ObjectAnimator.ofFloat(tvDemo, "translationX", 100F)
+        rightAnimator.duration = 250
+
+        val downAnimator = ObjectAnimator.ofFloat(tvDemo, "translationY", 100F)
+        downAnimator.duration = 250
+
+        val animatorSet = AnimatorSet()
+        animatorSet.playTogether(rightAnimator, downAnimator)
+        animatorSet.start()
+    }
+
+    private fun animateWithInterpolatorAndListener() {
+        val objectAnimator = ObjectAnimator.ofFloat(tvDemo, "translationX", 200F)
+        objectAnimator.interpolator = AccelerateDecelerateInterpolator()
+        objectAnimator.duration = 1000
+
+        objectAnimator.addUpdateListener { animation ->
+            Log.d("zavanton", "zavanton: ${animation.animatedValue as Float}")
+        }
+
+        objectAnimator.start()
     }
 }
