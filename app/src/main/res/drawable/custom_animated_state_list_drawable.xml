@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-selector
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/pressedState"
+        android:drawable="@drawable/background_pressed"
+        android:state_pressed="true"
+        />
+
+    <item
+        android:id="@+id/defaultState"
+        android:drawable="@drawable/background_unpressed"
+        android:state_pressed="false"
+        />
+
+    <transition
+        android:fromId="@id/defaultState"
+        android:toId="@id/pressedState"
+        >
+        <animation-list>
+            <item
+                android:drawable="@drawable/background_transition_one"
+                android:duration="100"
+                />
+
+            <item
+                android:drawable="@drawable/background_transition_two"
+                android:duration="100"
+                />
+            <item
+                android:drawable="@drawable/background_pressed"
+                android:duration="100"
+                />
+        </animation-list>
+    </transition>
+
+</animated-selector>
