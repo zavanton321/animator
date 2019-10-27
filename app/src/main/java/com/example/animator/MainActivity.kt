@@ -1,6 +1,8 @@
 package com.example.animator
 
-import android.animation.*
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.util.Log
 import android.view.animation.AccelerateDecelerateInterpolator
@@ -16,79 +18,83 @@ class MainActivity : AppCompatActivity() {
 
         tvDemo.setOnClickListener {
 
-            // animateWithValueAnimator()
-            // animateWithObjectAnimator()
-            // animateWithViewPropertyAnimator()
-            // complexAnimationWithAnimatorSet()
-            animateWithInterpolatorAndListener()
+            // animateWithInterpolator()
+            // animateWithAnimatorListener()
+            // animateWithAnimatorListenerAdapter()
+            // animateWithUpdateListener()
+            animateWithPauseListener()
         }
     }
 
-    private fun animateWithValueAnimator() {
-        val valueAnimator = ValueAnimator.ofFloat(1F, 0F)
-        valueAnimator.addUpdateListener { animator ->
-            tvDemo.alpha = animator.animatedValue as Float
-        }
-        valueAnimator.duration = 500
-        valueAnimator.start()
-    }
-
-    private fun animateWithObjectAnimator() {
-        val objectAnimator = ObjectAnimator.ofFloat(tvDemo, "alpha", 1F, 0F)
-        objectAnimator.duration = 500
+    private fun animateWithInterpolator() {
+        val objectAnimator = ObjectAnimator.ofFloat(tvDemo, "translationX", 200F)
+        objectAnimator.interpolator = AccelerateDecelerateInterpolator()
+        objectAnimator.duration = 1000
         objectAnimator.start()
     }
 
-    private fun animateWithViewPropertyAnimator() {
-        tvDemo.animate()
-            .alpha(0F)
-            .setDuration(500)
-            .start()
-    }
-
-    private fun complexAnimationWithAnimatorSet() {
-        val rightAnimator = ObjectAnimator.ofFloat(tvDemo, "translationX", 100F)
-        rightAnimator.duration = 250
-
-        val downAnimator = ObjectAnimator.ofFloat(tvDemo, "translationY", 100F)
-        downAnimator.duration = 250
-
-        val animatorSet = AnimatorSet()
-        animatorSet.playTogether(rightAnimator, downAnimator)
-        animatorSet.start()
-    }
-
-    private fun animateWithInterpolatorAndListener() {
+    private fun animateWithAnimatorListener() {
         val objectAnimator = ObjectAnimator.ofFloat(tvDemo, "translationX", 200F)
-        objectAnimator.interpolator = AccelerateDecelerateInterpolator()
+        objectAnimator.duration = 1000
+
+        objectAnimator.addListener(object : Animator.AnimatorListener {
+            override fun onAnimationStart(animation: Animator?) {
+                Toast.makeText(this@MainActivity, "Animation Start", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onAnimationRepeat(animation: Animator?) {
+                Toast.makeText(this@MainActivity, "Animation Repeat", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onAnimationEnd(animation: Animator?) {
+                Toast.makeText(this@MainActivity, "Animation End", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onAnimationCancel(animation: Animator?) {
+                Toast.makeText(this@MainActivity, "Animation Cancel", Toast.LENGTH_SHORT).show()
+            }
+        })
+
+        objectAnimator.start()
+    }
+
+    private fun animateWithAnimatorListenerAdapter() {
+        val objectAnimator = ObjectAnimator.ofFloat(tvDemo, "translationX", 200F)
+        objectAnimator.duration = 1000
+
+        objectAnimator.addListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationStart(animation: Animator?) {
+                Toast.makeText(this@MainActivity, "Animation Start", Toast.LENGTH_SHORT).show()
+            }
+        })
+
+        objectAnimator.start()
+    }
+
+    private fun animateWithUpdateListener() {
+        val objectAnimator = ObjectAnimator.ofFloat(tvDemo, "translationX", 200F)
         objectAnimator.duration = 1000
 
         objectAnimator.addUpdateListener { animation ->
             Log.d("zavanton", "zavanton: ${animation.animatedValue as Float}")
         }
 
-//        objectAnimator.addListener(object : Animator.AnimatorListener {
-//            override fun onAnimationStart(animation: Animator?) {
-//                Toast.makeText(this@MainActivity, "Animation Start", Toast.LENGTH_SHORT).show()
-//            }
-//
-//            override fun onAnimationRepeat(animation: Animator?) {
-//                Toast.makeText(this@MainActivity, "Animation Repeat", Toast.LENGTH_SHORT).show()
-//            }
-//
-//            override fun onAnimationEnd(animation: Animator?) {
-//                Toast.makeText(this@MainActivity, "Animation End", Toast.LENGTH_SHORT).show()
-//            }
-//
-//            override fun onAnimationCancel(animation: Animator?) {
-//                Toast.makeText(this@MainActivity, "Animation Cancel", Toast.LENGTH_SHORT).show()
-//            }
-//        })
+        objectAnimator.start()
+    }
 
-        objectAnimator.addListener(object : AnimatorListenerAdapter() {
-            override fun onAnimationStart(animation: Animator?) {
-                Toast.makeText(this@MainActivity, "Animation Start", Toast.LENGTH_SHORT).show()
+    private fun animateWithPauseListener() {
+        val objectAnimator = ObjectAnimator.ofFloat(tvDemo, "translationX", 200F)
+        objectAnimator.duration = 1000
+
+        objectAnimator.addPauseListener(object : Animator.AnimatorPauseListener {
+            override fun onAnimationPause(animation: Animator) {
+                Toast.makeText(this@MainActivity, "Animation Paused", Toast.LENGTH_SHORT).show()
             }
+
+            override fun onAnimationResume(animation: Animator) {
+                Toast.makeText(this@MainActivity, "Animation Resumed", Toast.LENGTH_SHORT).show()
+            }
+
         })
 
         objectAnimator.start()
