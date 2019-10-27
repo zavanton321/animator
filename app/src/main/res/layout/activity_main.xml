@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@android:color/holo_red_dark"
+        android:background="@drawable/demo_background"
         android:padding="16dp"
         android:text="Hello World!"
         android:textColor="@android:color/white"
