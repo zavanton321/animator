@@ -14,16 +14,16 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         >
-        <activity android:name=".listeners.ListenersActivity">
-
-        </activity>
-        <activity android:name=".animators.AnimatorActivity">
+        <activity android:name=".state_list_animator.LoadStateListAnimatorActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".state_list_animator.StateListAnimatorActivity" />
+        <activity android:name=".listeners.ListenersActivity" />
+        <activity android:name=".animators.AnimatorActivity" />
     </application>
 
 </manifest>
