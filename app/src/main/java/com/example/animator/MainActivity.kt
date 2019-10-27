@@ -1,11 +1,10 @@
 package com.example.animator
 
-import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
-import android.animation.ValueAnimator
+import android.animation.*
 import android.os.Bundle
 import android.util.Log
 import android.view.animation.AccelerateDecelerateInterpolator
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -67,6 +66,30 @@ class MainActivity : AppCompatActivity() {
         objectAnimator.addUpdateListener { animation ->
             Log.d("zavanton", "zavanton: ${animation.animatedValue as Float}")
         }
+
+//        objectAnimator.addListener(object : Animator.AnimatorListener {
+//            override fun onAnimationStart(animation: Animator?) {
+//                Toast.makeText(this@MainActivity, "Animation Start", Toast.LENGTH_SHORT).show()
+//            }
+//
+//            override fun onAnimationRepeat(animation: Animator?) {
+//                Toast.makeText(this@MainActivity, "Animation Repeat", Toast.LENGTH_SHORT).show()
+//            }
+//
+//            override fun onAnimationEnd(animation: Animator?) {
+//                Toast.makeText(this@MainActivity, "Animation End", Toast.LENGTH_SHORT).show()
+//            }
+//
+//            override fun onAnimationCancel(animation: Animator?) {
+//                Toast.makeText(this@MainActivity, "Animation Cancel", Toast.LENGTH_SHORT).show()
+//            }
+//        })
+
+        objectAnimator.addListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationStart(animation: Animator?) {
+                Toast.makeText(this@MainActivity, "Animation Start", Toast.LENGTH_SHORT).show()
+            }
+        })
 
         objectAnimator.start()
     }
