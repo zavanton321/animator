@@ -14,13 +14,14 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         >
-        <activity android:name=".crossfade.CrossFadeActivity">
+        <activity android:name=".card_flip.CardFlipActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".crossfade.CrossFadeActivity" />
         <activity android:name=".vector.VectorActivity" />
         <activity android:name=".animated_vector.AnimatedVectorDrawableActivity" />
         <activity android:name=".type_evaluator.TypeEvaluatorActivity" />
