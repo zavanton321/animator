@@ -54,8 +54,8 @@ class SpringActivity : AppCompatActivity() {
                 }
 
                 MotionEvent.ACTION_MOVE -> {
-                    tvDemo.x = motionEvent.rawX - diffX
-                    tvDemo.y = motionEvent.rawY - diffY
+                    view.x = motionEvent.rawX - diffX
+                    view.y = motionEvent.rawY - diffY
                 }
 
                 MotionEvent.ACTION_UP -> {
