@@ -43,7 +43,6 @@ class CardFlipActivity : FragmentActivity() {
         container.setOnClickListener {
             flipCard()
         }
-
     }
 
     private fun flipCard() {
