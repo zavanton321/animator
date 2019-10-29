@@ -5,12 +5,15 @@
     android:layout_height="match_parent"
     >
 
-    <ImageView
-        android:id="@+id/tvDemo"
-        android:src="@drawable/ic_animated_triangle"
-        android:layout_gravity="center"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@android:color/holo_red_dark"
+        android:padding="24dp"
+        android:text="Sakura"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
         />
 
 </FrameLayout>

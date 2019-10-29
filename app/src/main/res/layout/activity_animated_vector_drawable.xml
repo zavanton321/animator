@@ -6,7 +6,7 @@
     >
 
     <ImageView
-        android:id="@+id/ivDemo"
+        android:id="@+id/tvDemo"
         android:src="@drawable/custom_animated_vector_drawable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

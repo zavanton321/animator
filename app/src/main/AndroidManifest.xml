@@ -14,13 +14,17 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         >
-        <activity android:name=".custom_spring.ScaleImageActivity">
+        <activity android:name=".demo_spring.MoreSpringActivity">
+
+        </activity>
+        <activity android:name=".demo_spring.DemoSpringActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".custom_spring.ScaleImageActivity" />
         <activity android:name=".custom_spring.CustomSpringActivity" />
         <activity android:name=".spring.SpringActivity" />
         <activity android:name=".circular_reveal.CircularRevealActivity" />

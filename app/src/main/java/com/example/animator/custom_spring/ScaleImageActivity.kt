@@ -32,8 +32,8 @@ class ScaleImageActivity : AppCompatActivity() {
             scaleFactor *= detector.scaleFactor
             scaleFactor = max(0.1F, min(scaleFactor, 10F))
 
-            ivDemo.scaleX = scaleFactor
-            ivDemo.scaleY = scaleFactor
+            tvDemo.scaleX = scaleFactor
+            tvDemo.scaleY = scaleFactor
 
             return true
         }

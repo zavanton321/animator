@@ -12,9 +12,9 @@ class AnimatedVectorDrawableActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_animated_vector_drawable)
 
-        val animatedVectorDrawable = ivDemo.drawable as AnimatedVectorDrawable
+        val animatedVectorDrawable = tvDemo.drawable as AnimatedVectorDrawable
 
-        ivDemo.setOnClickListener {
+        tvDemo.setOnClickListener {
             animatedVectorDrawable.start()
         }
     }
