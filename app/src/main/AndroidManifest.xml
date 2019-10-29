@@ -14,13 +14,14 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         >
-        <activity android:name=".demo_spring.RotateActivity">
+        <activity android:name=".demo_spring.ScaleAnimationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".demo_spring.RotateActivity" />
         <activity android:name=".demo_spring.DemoSpringActivity" />
         <activity android:name=".demo_spring.MoreSpringActivity" />
         <activity android:name=".custom_spring.ScaleImageActivity" />
