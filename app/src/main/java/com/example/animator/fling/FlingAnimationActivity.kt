@@ -15,12 +15,13 @@ class FlingAnimationActivity : AppCompatActivity() {
         btnAnimate.setOnClickListener {
             animateWithFlingAnimation()
         }
-
     }
 
     private fun animateWithFlingAnimation() {
         val fling = FlingAnimation(tvDemo, FlingAnimation.X)
         fling.setStartVelocity(1000F)
+        fling.setMinValue(10F)
+        fling.setMaxValue(2000F)
         fling.setFriction(1F)
         fling.start()
     }
