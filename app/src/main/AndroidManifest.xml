@@ -14,13 +14,14 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         >
-        <activity android:name=".demo_spring.FloatPropertyCompatActivity">
+        <activity android:name=".fling.MoveActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".demo_spring.FloatPropertyCompatActivity" />
         <activity android:name=".fling.FlingAnimationActivity" />
         <activity android:name=".demo_spring.ScaleAnimationActivity" />
         <activity android:name=".demo_spring.RotateActivity" />
